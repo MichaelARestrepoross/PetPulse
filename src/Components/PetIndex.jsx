@@ -1,9 +1,12 @@
 import React from 'react'
 
-function petIndex() {
+function PetIndex({handleLogout}) {
+
   return (
-    <div>petIndex</div>
+    <div>
+      petIndex
+    </div>
   )
 }
 
-export default petIndex
+export default PetIndex

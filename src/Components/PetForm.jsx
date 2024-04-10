@@ -1,9 +1,9 @@
 import React from 'react'
 
-function petForm() {
+function PetForm() {
   return (
     <div>petForm</div>
   )
 }
 
-export default petForm
+export default PetForm

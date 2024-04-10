@@ -1,9 +1,9 @@
 import React from 'react'
 
-function reminderIndex() {
+function ReminderIndex() {
   return (
     <div>reminderIndex</div>
   )
 }
 
-export default reminderIndex
+export default ReminderIndex

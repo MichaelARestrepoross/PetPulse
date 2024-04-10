@@ -1,9 +1,9 @@
 import React from 'react'
 
-function petDetailed() {
+function PetDetailed() {
   return (
-    <div>petDetailed</div>
+    <div>petDetaileP</div>
   )
 }
 
-export default petDetailed
+export default PetDetailed
