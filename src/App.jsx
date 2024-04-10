@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import ProtectedRoute from "./Components/ProtectedRoute";
-import Register from "./Components/Register";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import NavBar from "./Components/NavBar";
-import LandingPage from "./Components/LandingPage";
+import ProtectedRoute from "./Components/commonComponents/ProtectedRoute";
+import Register from "./Components/commonComponents/Login";
+import Login from "./Components/commonComponents/Login";
+import Dashboard from "./Components/commonComponents/Dashboard";
+import NavBar from "./Components/commonComponents/NavBar";
+import LandingPage from "./Components/commonComponents/LandingPage";
 
 function App() {
   const navigate = useNavigate();
