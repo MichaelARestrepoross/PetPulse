@@ -47,7 +47,7 @@ function App() {
           path="/register"
           element={<Register setToggleLogin={setToggleLogin} />}
         />
-                  <Route
+          <Route
             path="/about"
             element={<AboutTheDevs handleLogout={handleLogout} />}
           />
