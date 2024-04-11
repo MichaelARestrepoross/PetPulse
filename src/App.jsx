@@ -62,6 +62,14 @@ function App() {
             path="/Pets"
             element={<PetIndex handleLogout={handleLogout} />}
           />
+          <Route
+            path="/Pets/:id"
+            element={<PetDetailed handleLogout={handleLogout} />}
+          />
+          <Route
+            path="/reminders"
+            element={<ReminderIndex handleLogout={handleLogout} />}
+          />
           
 
         </Route>
