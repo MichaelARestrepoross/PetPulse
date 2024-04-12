@@ -59,12 +59,20 @@ function App() {
             element={<Dashboard handleLogout={handleLogout} />}
           />
           <Route
-            path="/Pets"
+            path="/pets"
             element={<PetIndex handleLogout={handleLogout} />}
           />
           <Route
-            path="/Pets/:id"
+            path="/pets/:id"
             element={<PetDetailed handleLogout={handleLogout} />}
+          />
+          <Route
+            path="/pets/:id/edit"
+            element={<PetForm handleLogout={handleLogout} />}
+          />
+          <Route
+            path="/pets/new"
+            element={<PetForm handleLogout={handleLogout} />}
           />
           <Route
             path="/reminders"
