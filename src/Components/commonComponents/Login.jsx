@@ -33,11 +33,20 @@ const Login = ({ setToggleLogin }) => {
       }
 
       if (data.token) {
+
+        const userData = {
+          id: data.user.id,
+          username: data.user.username,
+          // email: data.user.email
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
         localStorage.setItem("token", data.token);
+
         await setToggleLogin(true);
         navigate("/dashboard");
       } else {
-        console.log("JWT Login Failed");
+        console.log("Login Failed");
       }
     } catch (error) {
       console.error("Error during registration:", error);
