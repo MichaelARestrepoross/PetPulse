@@ -3,6 +3,7 @@ import ReminderSingle from './ReminderSingle';
 
 function ReminderIndex() {
   const [reminders, setReminders] = useState([]);
+  const [remindersToggle,setRemindersToggle] = useState(false);
 
   useEffect(() => {
     const fetchReminders = async () => {
@@ -18,12 +19,16 @@ function ReminderIndex() {
       }
     };
     fetchReminders();
-  }, []);
+  }, [remindersToggle]);
 
   return (
     <div className="max-w-4xl mx-auto max-h-80 overflow-y-auto">
       {reminders.map((reminder) => (
-        <ReminderSingle key={reminder.id} reminder={reminder} />
+        <ReminderSingle key={reminder.id} 
+          reminder={reminder} 
+          remindersToggle={remindersToggle}
+          setRemindersToggle={setRemindersToggle}
+        />
       ))}
     </div>
   );

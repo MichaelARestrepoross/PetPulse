@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ReminderSingle({ reminder }) {
+function ReminderSingle({ reminder,remindersToggle, setRemindersToggle }) {
   const navigate = useNavigate(); 
 
   // Function to format reminder time
@@ -14,6 +14,29 @@ function ReminderSingle({ reminder }) {
     navigate(`/pets/${petId}/reminders/edit/${reminderId}`);
   };
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:3003/api/reminders/${reminder.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setRemindersToggle(!remindersToggle);
+        console.log('Reminder deleted successfully');
+      } else {
+        console.error('Failed to delete reminder');
+        console.error('Response status:', response.status);
+        const responseBody = await response.json();
+        console.error('Response body:', responseBody);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
+
   return (
     <div className="max-w-xl mx-auto m-2 bg-white shadow-md rounded-lg overflow-hidden">
       <div className="px-4 py-2">
@@ -24,6 +47,7 @@ function ReminderSingle({ reminder }) {
         <p className="text-gray-700"><strong>Reminder Message:</strong> {reminder.reminder_message}</p>
         <p className="text-gray-700"><strong>Reminder Time:</strong> {formatReminderTime(reminder.reminder_time)}</p>
         <p className="text-gray-700"><strong>Created At:</strong> {formatReminderTime(reminder.created_at)}</p>
+        <button onClick={handleDelete} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">Delete Reminder</button>
         {/* Button to navigate to edit reminder */}
         <button
           onClick={() => handleEditReminder(reminder.pet_id, reminder.id)}
