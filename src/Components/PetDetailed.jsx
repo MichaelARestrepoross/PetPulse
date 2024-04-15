@@ -53,6 +53,15 @@ function PetDetailed() {
   const handleEdit = () => {
     navigate(`/pets/${id}/edit`);
   };
+  
+  const handleCreateReminder = () => {
+    navigate(`/pets/${id}/reminders/new`);
+  };
+
+  const handleEditReminder = (reminderId) => {
+    navigate(`/pets/${id}/reminders/${reminderId}/edit`);
+  };
+
 
 
   return (
@@ -69,6 +78,7 @@ function PetDetailed() {
             <p className="text-gray-700"><strong>Updated At:</strong> {new Date(pet.updated_at).toLocaleString()}</p>
             <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleDelete}>Delete</button>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleEdit}>Edit</button>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCreateReminder}>Create Reminder</button>
           </div>
           <div className="px-4 py-2 ">
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Filtered Reminders</h2>
