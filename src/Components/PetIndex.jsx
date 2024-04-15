@@ -42,6 +42,16 @@ function PetIndex({ handleLogout }) {
               onClick={() => handlePetClick(pet.id)}
               className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
             >
+              {/* Image div */}
+              <div className="relative overflow-hidden rounded-lg" style={{ paddingTop: '100%' }}>
+                {console.log(pet.image_url)}
+                <img
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={pet.image_url}
+                  alt={pet.name}
+                />
+              </div>
+
               <div className="p-4">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2"><strong>Pet:</strong> {pet.name}</h2>
                 <p className="text-gray-700"><strong>Species:</strong> {pet.species}</p>
