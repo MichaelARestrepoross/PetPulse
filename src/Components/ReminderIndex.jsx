@@ -22,7 +22,7 @@ function ReminderIndex() {
   }, [remindersToggle]);
 
   return (
-    <div className="max-w-4xl mx-auto max-h-80 overflow-y-auto">
+    <div className="max-w-4xl mx-auto overflow-y-auto "style={{ maxHeight: '500px' }}>
       {reminders.map((reminder) => (
         <ReminderSingle key={reminder.id} 
           reminder={reminder} 

@@ -32,7 +32,7 @@ function PetIndex({ handleLogout }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4">
+    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4 mt-6">
         <ReminderIndex />
       <div className="md:overflow-y-auto m-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -43,7 +43,7 @@ function PetIndex({ handleLogout }) {
               className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
             >
               {/* Image div */}
-              <div className="relative overflow-hidden rounded-lg" style={{ paddingTop: '100%' }}>
+              <div className="relative overflow-hidden rounded-lg mt-6" style={{ paddingTop: '100%' }}>
                 {console.log(pet.image_url)}
                 <img
                   className="absolute inset-0 w-full h-full object-cover"
