@@ -16,6 +16,7 @@ const PetForm = () => {
     species: "",
     breed: "",
     age: 0,
+    image_url: "", 
     updated_at:new Date().toISOString(),
   });
   const [createdAt, setCreatedAt] = useState(null);
@@ -41,6 +42,7 @@ const PetForm = () => {
             species: data.species,
             breed: data.breed || "",
             age: data.age || 0,
+            image_url: data.image_url || "",
             updated_at:new Date().toISOString(),
           });
           setCreatedAt(new Date(data.created_at).toLocaleString());
@@ -96,6 +98,19 @@ const PetForm = () => {
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <div className="mb-4">
+          <label htmlFor="image_url" className="block text-sm font-medium text-gray-700">
+            Image URL
+          </label>
+          <input
+            type="text"
+            id="image_url"
+            name="image_url"
+            value={formData.image_url}
+            onChange={handleInputChange}
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Name
