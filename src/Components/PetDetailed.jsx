@@ -53,22 +53,25 @@ function PetDetailed() {
   const handleEdit = () => {
     navigate(`/pets/${id}/edit`);
   };
-  
+
   const handleCreateReminder = () => {
     navigate(`/pets/${id}/reminders/new`);
   };
-
-  const handleEditReminder = (reminderId) => {
-    navigate(`/pets/${id}/reminders/${reminderId}/edit`);
-  };
-
-
 
   return (
     <div className="max-w-xl mx-auto">
       {pet && (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <div className="px-4 py-2">
+              {/* Image div */}
+              <div className="relative overflow-hidden rounded-lg" style={{ paddingTop: '100%' }}>
+                {console.log(pet.image_url)}
+                <img
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={pet.image_url}
+                  alt={pet.name}
+                />
+              </div>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Pet Details</h2>
             <p className="text-gray-700"><strong>Name:</strong> {pet.name}</p>
             <p className="text-gray-700"><strong>Species:</strong> {pet.species}</p>
