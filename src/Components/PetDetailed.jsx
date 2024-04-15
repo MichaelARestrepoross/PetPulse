@@ -83,7 +83,7 @@ function PetDetailed() {
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleEdit}>Edit</button>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCreateReminder}>Create Reminder</button>
           </div>
-          <div className="px-4 py-2 ">
+          <div className="px-4 py-2 overflow-y-auto" style={{ maxHeight: '400px' }}>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Filtered Reminders</h2>
             {pet.filterdReminders.map((reminder) => (
               <ReminderSingle key={reminder.id} reminder={reminder} />
