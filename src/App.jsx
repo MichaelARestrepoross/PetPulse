@@ -78,8 +78,14 @@ function App() {
             path="/reminders"
             element={<ReminderIndex handleLogout={handleLogout} />}
           />
-          
-
+          <Route
+            path="/pets/:id/reminders/:action"
+            element={<ReminderForm handleLogout={handleLogout} />}
+          />
+          <Route
+            path="/pets/:id/reminders/:action/:reminderId"
+            element={<ReminderForm handleLogout={handleLogout} />}
+          />
         </Route>
       </Routes>
     </>
