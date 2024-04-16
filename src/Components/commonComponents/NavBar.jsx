@@ -13,7 +13,7 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
     if (toggleLogin) {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${URL}/api/auth/user`, {
+        fetch(`${URL}/api/check/user`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -15,7 +15,8 @@ export const useAuth = () => {
       const token = localStorage.getItem("token");
 
       try {
-        const response = await fetch(`${URL}/api/auth/check-auth`, {
+        // remember to use the new URL for the fetch using the checkController
+        const response = await fetch(`${URL}/api/check/check-auth`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
