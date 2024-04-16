@@ -9,6 +9,7 @@ import Dashboard from "./Components/commonComponents/Dashboard";
 import NavBar from "./Components/commonComponents/NavBar";
 import LandingPage from "./Components/commonComponents/LandingPage";
 import AboutTheDevs from "./Components/commonComponents/AboutTheDevs";
+import Footer from "./Components/commonComponents/Footer";
 
 //Components
 import PetIndex from "./Components/PetIndex";
@@ -88,6 +89,11 @@ function App() {
           />
         </Route>
       </Routes>
+      <Footer
+        handleLogout={handleLogout}
+        toggleLogin={toggleLogin}
+        setToggleLogin={setToggleLogin}
+      />
     </>
   );
 }
