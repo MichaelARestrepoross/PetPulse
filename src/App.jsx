@@ -48,16 +48,20 @@ function App() {
           path="/register"
           element={<Register setToggleLogin={setToggleLogin} />}
         />
-          <Route
-            path="/about"
-            element={<AboutTheDevs handleLogout={handleLogout} />}
-          />
+        <Route
+          path="/about"
+          element={<AboutTheDevs handleLogout={handleLogout} />}
+        />
 
         <Route element={<ProtectedRoute />}>
           {/* Place protected routes here */}
           <Route
             path="/dashboard"
             element={<Dashboard handleLogout={handleLogout} />}
+          />
+          <Route
+            path="/about/dev"
+            element={<AboutTheDevs handleLogout={handleLogout} />}
           />
           <Route
             path="/pets"

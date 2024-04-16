@@ -44,7 +44,6 @@ function PetIndex({ handleLogout }) {
             >
               {/* Image div */}
               <div className="relative overflow-hidden rounded-lg mt-6" style={{ paddingTop: '100%' }}>
-                {console.log(pet.image_url)}
                 <img
                   className="absolute inset-0 w-full h-full object-cover"
                   src={pet.image_url}

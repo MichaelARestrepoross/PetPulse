@@ -12,7 +12,7 @@ const Footer = () => {
             </div>
           </Link>
           <div className="text-white flex flex-row  pt-5 ">
-            <Link to={"/aboutthedevs"}>
+            <Link to={"/about"}>
               <div className="hover:text-blue-400 lg:mr-10 ">About</div>
             </Link>
             <Link
@@ -23,7 +23,7 @@ const Footer = () => {
             </Link>
           </div>
           <span className="flex flex-row pt-6 pb-4 text-white text-sm">
-            &#169;2024 CourseQuest Inc.
+            &#169;2024 PetPulse Inc.
           </span>
         </div>
       </div>

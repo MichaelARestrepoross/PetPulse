@@ -65,7 +65,6 @@ function PetDetailed() {
           <div className="px-4 py-2">
               {/* Image div */}
           <div className="relative overflow-hidden rounded-lg" style={{ width: '100%', height: '400px' }}>
-            {console.log(pet.image_url)}
             <img
               className="absolute inset-0 w-full h-full object-cover"
               src={pet.image_url}
