@@ -14,7 +14,7 @@ const SocketComponent = () => {
   const [reminders, setReminders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3003/reminders/1")
+    fetch("http://localhost:3003/reminders/4")
       .then((res) => res.json())
       .then((data) => setReminders(data));
   }, []);

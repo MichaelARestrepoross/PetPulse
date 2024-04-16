@@ -6,6 +6,7 @@ function PetDetailed() {
   const [pet, setPet] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [remindersToggle,setRemindersToggle] = useState(false);
   
   useEffect(() => {
     const fetchPetDetails = async () => {
@@ -25,7 +26,7 @@ function PetDetailed() {
       }
     };
     fetchPetDetails();
-  }, [id]);
+  }, [id,remindersToggle]);
 
   const handleDelete = async () => {
     try {
@@ -85,7 +86,11 @@ function PetDetailed() {
           <div className="px-4 py-2 overflow-y-auto" style={{ maxHeight: '400px' }}>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Filtered Reminders</h2>
             {pet.filterdReminders.map((reminder) => (
-              <ReminderSingle key={reminder.id} reminder={reminder} />
+              <ReminderSingle key={reminder.id} 
+                reminder={reminder} 
+                remindersToggle={remindersToggle}
+                setRemindersToggle={setRemindersToggle} 
+              />
             ))}
           </div>
         </div>
