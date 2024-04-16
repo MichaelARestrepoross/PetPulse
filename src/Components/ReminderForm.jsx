@@ -25,8 +25,26 @@ const ReminderForm = () => {
 
     // Function to format reminder time
     const formatReminderTime = (timeString) => {
-      const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-      return new Date(timeString).toLocaleString(undefined, options);
+      const date = new Date(timeString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+
+    const convertToBackendFormat = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const seconds = String(date.getSeconds()).padStart(2, "0");
+      const milliseconds = String(date.getMilliseconds()).padStart(3, "0");
+    
+      return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
     };
 
   useEffect(() => {
@@ -121,7 +139,7 @@ const ReminderForm = () => {
         className="max-w-md mx-auto border "
       >
         <div className="flex items-center justify-center border h-10 bg-blue-700 bg-gradient-to-tr from-blue-400 to-transparent">
-          <p className="text-white">Pets Form</p>
+          <p className="text-white">Reminder's Form</p>
         </div>
       <div className="flex flex-col items-center justify-center p-2">
 
