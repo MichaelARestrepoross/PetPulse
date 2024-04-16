@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect,  } from "react";
+import { useParams, useNavigate ,useOutletContext} from "react-router-dom";
+
 
 const ReminderForm = () => {
   const API_URL = "http://localhost:3003";
   const navigate = useNavigate();
   const { id, reminderId, action } = useParams(); // action will be "new" or "edit"
-
+ const {user} = useOutletContext();
   // Log the action parameter to debug
   console.log("Action parameter:", action);
 
   const isNewReminder = action === "new";
 
   console.log("isNewReminder:", isNewReminder);
+  console.log(user);
 
   const [formData, setFormData] = useState({
     pet_id: id, // Pet ID will be received from the route params
+    user_id:user.id,
     reminder_type: "",
     reminder_message: "",
     reminder_time: isNewReminder ? "" : new Date().toISOString(), // Default to current date and time if editing
