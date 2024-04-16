@@ -89,18 +89,18 @@ const ReminderForm = () => {
     event.preventDefault();
     const token = localStorage.getItem("token");
   
-    // Construct UTC timestamp from individual date and time components
-    const year = parseInt(formData.reminder_time.substring(0, 4));
-    const month = parseInt(formData.reminder_time.substring(5, 7)) - 1; // Months are zero-based
-    const day = parseInt(formData.reminder_time.substring(8, 10));
-    const hour = parseInt(formData.reminder_time.substring(11, 13));
-    const minute = parseInt(formData.reminder_time.substring(14, 16));
+    // Parse the date and time from the form data in the user's local time zone
+    const localDate = new Date(formData.reminder_time);
   
-    const reminderTimeUTC = new Date(Date.UTC(year, month, day, hour, minute));
+    // Convert the local date and time to UTC
+    const utcDate = new Date(localDate.getTime());
+  
+    // Format the date and time as expected by the backend
+    const formattedReminderTime = utcDate.toISOString();
   
     const formattedFormData = {
       ...formData,
-      reminder_time: reminderTimeUTC.toISOString(), // Convert to ISO string
+      reminder_time: formattedReminderTime,
     };
   
     const requestOptions = {
@@ -113,13 +113,12 @@ const ReminderForm = () => {
     };
   
     try {
-      // Construct the URL differently for new reminders
       const url = isNewReminder ? `${API_URL}/api/reminders` : `${API_URL}/api/reminders/${reminderId}`;
       const response = await fetch(url, requestOptions);
   
       if (response.ok) {
         console.log(isNewReminder ? "Reminder created successfully" : "Reminder updated successfully");
-        navigate(`/pets/${id}`); // Navigate back to the pet details page
+        navigate(`/pets/${id}`);
       } else {
         console.error(isNewReminder ? "Failed to create reminder" : "Failed to update reminder");
         console.error("Response status:", response.status);
@@ -132,6 +131,7 @@ const ReminderForm = () => {
   };
   
   
+  
 
   return (
     <div className="container mx-auto border p-2">
@@ -142,20 +142,11 @@ const ReminderForm = () => {
           <p className="text-white">Reminder's Form</p>
         </div>
       <div className="flex flex-col items-center justify-center p-2">
-
         <div className="mb-4">
-          <label htmlFor="pet_id" className="block text-sm font-medium text-gray-700 text-center w-full">
-            Pet ID
-          </label>
-          <input
-            type="text"
-            id="pet_id"
-            name="pet_id"
-            value={formData.pet_id}
-            onChange={handleInputChange}
-            required
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-60"
-            />
+          <h2 htmlFor="pet_id" className="block text-sm font-medium text-gray-700 text-center w-full">
+            Pet ID :{formData.pet_id}
+          </h2>
+
         </div>
         <div className="mb-4">
         <label htmlFor="reminder_type" className="block text-sm font-medium text-gray-700 text-center w-full">
@@ -208,7 +199,7 @@ const ReminderForm = () => {
       </form>
       {/* Display created and updated dates */}
       {!isNewReminder && (
-        <div className="mt-4 text-gray-700">
+        <div className="mt-4 text-gray-700 border w-64">
           <p>Created At: {createdAt}</p>
         </div>
       )}
