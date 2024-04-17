@@ -99,22 +99,22 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
 
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300">
-      <div className="px-4 py-4 flex flex-row justify-between"></div>
-          <Link to={"/"}>
-            <div className="font-bold text-2xl text-white inline-block">
+      <div className="px-4  py-2 flex flex-row justify-between"></div>
+          <Link to={"/pets"}>
+            <div className="font-bold text-3xl text-white inline-block">
               <span className="">P</span>et
               <span className="">P</span>ulse
             </div>
           </Link>
         {!toggleLogin ? (
           <Link to={"/login"}>
-            <span>Login</span>
+            <span className="hover:text-white">Login</span>
           </Link>
         ) : (
           <div>
-            {user && <span>Hello, {user.username.toUpperCase()}? | </span>}
+            {user && <span>Hello, {user.username.toUpperCase()} | </span>}
             <Link onClick={handleLogout}>
-              <span>Logout</span>
+              <span className="hover:text-white">Logout</span>
             </Link>
           </div>
         )}

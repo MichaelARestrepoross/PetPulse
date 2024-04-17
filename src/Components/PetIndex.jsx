@@ -32,15 +32,18 @@ function PetIndex({ handleLogout }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4 mt-6 mb-20">
+    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-24 mt-20 mb-20">
         <ReminderIndex />
       <div className="md:overflow-y-auto m-0">
-        <button
-          onClick={handleCreatePetProfile}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Create Pet Profile
-        </button>
+        <h2 className='text-3xl text-white text-center my-5 font-semibold border-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300'> My Pets</h2>
+        <div className='flex justify-center mb-2'>
+          <button
+            onClick={handleCreatePetProfile}
+            className="bg-blue-500 w-96 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            Create Pet Profile
+          </button>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-auto" style={{ maxHeight: '500px' }}>
           {pets.map((pet) => (
             <div
@@ -68,7 +71,7 @@ function PetIndex({ handleLogout }) {
             </div>
           ))}
         </div>
-        </div>
+      </div>
       
     </div>
   );

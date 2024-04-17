@@ -22,15 +22,20 @@ function ReminderIndex() {
   }, [remindersToggle]);
 
   return (
-    <div className="max-w-4xl mx-auto overflow-y-auto "style={{ maxHeight: '500px' }}>
+    
+      <div>
+            <h2 className='text-3xl text-white text-center my-5 font-semibold border-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300'
+      > My Reminders</h2>
+    <div className="max-w-4xl mx-auto overflow-y-auto "style={{ maxHeight: '550px' }}>
       {reminders.map((reminder) => (
         <ReminderSingle key={reminder.id} 
-          reminder={reminder} 
-          remindersToggle={remindersToggle}
-          setRemindersToggle={setRemindersToggle}
+        reminder={reminder} 
+        remindersToggle={remindersToggle}
+        setRemindersToggle={setRemindersToggle}
         />
-      ))}
+        ))}
     </div>
+        </div>
   );
 }
 
