@@ -125,13 +125,13 @@ const ReminderForm = () => {
   
 
   return (
-    <div className="container mx-auto border p-2">
+    <div className="container mx-auto p-2 mt-20">
       <form onSubmit={handleSubmit} 
         className="max-w-md mx-auto border "
       >
-        <div className="flex items-center justify-center border h-10 bg-blue-700 bg-gradient-to-tr from-blue-400 to-transparent">
-          <p className="text-white">Reminder's Form</p>
-        </div>
+      <div className="flex items-center justify-center border h-10 bg-blue-700 bg-gradient-to-tr from-blue-400 to-transparent">
+        <p className="text-white text-2xl font-semibold">Reminder's Form</p>
+      </div>
       <div className="flex flex-col items-center justify-center p-2">
         <div className="mb-4">
           <h2 htmlFor="pet_id" className="block text-sm font-medium text-gray-700 text-center w-full">
@@ -182,18 +182,18 @@ const ReminderForm = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
           >
           {isNewReminder ? "Create Reminder" : "Update Reminder"}
         </button>
       </div>
       </form>
       {/* Display created and updated dates */}
-      {!isNewReminder && (
+      {/* {!isNewReminder && (
         <div className="mt-4 text-gray-700 border w-64">
           <p>Created At: {createdAt}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -27,8 +27,6 @@ const PetForm = () => {
     console.log(new Date().toISOString())
     const fetchUserDataForm = async () => {
       try {
-
-        
         // Fetch pet details if editing
         if (id) {
           const response = await fetch(`${API_URL}/api/pets/${id}`);
@@ -42,7 +40,7 @@ const PetForm = () => {
             species: data.species,
             breed: data.breed || "",
             age: data.age || 0,
-            image_url: data.image_url || "",
+            image_url: data.image_url || "https://res.cloudinary.com/dm8xhvx4t/image/upload/v1713371694/default_pet_zscwz2.jpg",
             updated_at:new Date().toISOString(),
           });
           setCreatedAt(new Date(data.created_at).toLocaleString());
@@ -96,9 +94,15 @@ const PetForm = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-      <div className="mb-4">
+    <div className="container mx-auto p-6 pb-20">
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto border">
+        <div className="flex items-center justify-center border h-10 bg-blue-700 bg-gradient-to-tr from-blue-400 to-transparent mb-4">
+          <p className="text-white">Pet's Form</p>
+        </div>
+
+        <div className="p-2">
+
+        <div className="mb-4">
           <label htmlFor="image_url" className="block text-sm font-medium text-gray-700">
             Image URL
           </label>
@@ -108,8 +112,8 @@ const PetForm = () => {
             name="image_url"
             value={formData.image_url}
             onChange={handleInputChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -122,8 +126,8 @@ const PetForm = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="species" className="block text-sm font-medium text-gray-700">
@@ -136,8 +140,8 @@ const PetForm = () => {
             value={formData.species}
             onChange={handleInputChange}
             required
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="breed" className="block text-sm font-medium text-gray-700">
@@ -149,8 +153,8 @@ const PetForm = () => {
             name="breed"
             value={formData.breed}
             onChange={handleInputChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="age" className="block text-sm font-medium text-gray-700">
@@ -162,13 +166,17 @@ const PetForm = () => {
             name="age"
             value={formData.age}
             onChange={handleInputChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+            />
         </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          {id ? "Update Pet" : "Create Pet"}
-        </button>
+        <div className="flex justify-center">
+          <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            {id ? "Update Pet" : "Create Pet"}
+          </button>
+        </div>
+      </div>
       </form>
+
       {/* Display created and updated dates */}
       {id && (
         <div className="mt-4 text-gray-700">

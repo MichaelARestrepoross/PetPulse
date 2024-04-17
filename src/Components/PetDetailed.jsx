@@ -60,7 +60,7 @@ function PetDetailed() {
   };
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto mb-20 mt-10">
       {pet && (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <div className="px-4 py-2">
@@ -72,27 +72,32 @@ function PetDetailed() {
               alt={pet.name}
             />
           </div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">Pet Details</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-2">{pet.name}'s Details</h2>
             <p className="text-gray-700"><strong>Name:</strong> {pet.name}</p>
             <p className="text-gray-700"><strong>Species:</strong> {pet.species}</p>
             <p className="text-gray-700"><strong>Breed:</strong> {pet.breed || "Unknown"}</p>
             <p className="text-gray-700"><strong>Age:</strong> {pet.age || "Unknown"}</p>
             <p className="text-gray-700"><strong>Created At:</strong> {new Date(pet.created_at).toLocaleString()}</p>
-            <p className="text-gray-700"><strong>Updated At:</strong> {new Date(pet.updated_at).toLocaleString()}</p>
+            <p className="text-gray-700 mb-2"><strong>Updated At:</strong> {new Date(pet.updated_at).toLocaleString()}</p>
             <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleDelete}>Delete</button>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleEdit}>Edit</button>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCreateReminder}>Create Reminder</button>
           </div>
+          <hr className='border-2 mt-2' />
+          {pet.filterdReminders.length > 0 && (
           <div className="px-4 py-2 overflow-y-auto" style={{ maxHeight: '400px' }}>
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">Filtered Reminders</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">{pet.name}'s Reminders</h2>
             {pet.filterdReminders.map((reminder) => (
-              <ReminderSingle key={reminder.id} 
-                reminder={reminder} 
+              <ReminderSingle
+                key={reminder.id}
+                reminder={reminder}
                 remindersToggle={remindersToggle}
-                setRemindersToggle={setRemindersToggle} 
+                setRemindersToggle={setRemindersToggle}
               />
             ))}
           </div>
+        )}
+
         </div>
       )}
     </div>

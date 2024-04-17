@@ -38,7 +38,7 @@ function ReminderSingle({ reminder,remindersToggle, setRemindersToggle }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto m-2 bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="max-w-xl mx-auto m-2 bg-zinc-200 shadow-md rounded-lg overflow-hidden">
       <div className="px-4 py-2">
         <h2 className="text-lg font-semibold text-gray-800 mb-2">Reminder</h2>
         <h2 className="text-gray-700"><strong>Pet Name:</strong> {reminder.pet_name}</h2>
@@ -47,7 +47,7 @@ function ReminderSingle({ reminder,remindersToggle, setRemindersToggle }) {
         <p className="text-gray-700"><strong>Reminder Message:</strong> {reminder.reminder_message}</p>
         <p className="text-gray-700"><strong>Reminder Time:</strong> {formatReminderTime(reminder.reminder_time)}</p>
         <p className="text-gray-700"><strong>Created At:</strong> {formatReminderTime(reminder.created_at)}</p>
-        <button onClick={handleDelete} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 mr-2">Delete Reminder</button>
+        <button onClick={handleDelete} className="bg-red-500 mt-2 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 mr-2">Delete Reminder</button>
         {/* Button to navigate to edit reminder */}
         <button
           onClick={() => handleEditReminder(reminder.pet_id, reminder.id)}

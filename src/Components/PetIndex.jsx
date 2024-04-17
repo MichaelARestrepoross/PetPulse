@@ -27,20 +27,29 @@ function PetIndex({ handleLogout }) {
     navigate(`/pets/${petID}`);
   };
 
-  const handleCreateReminder = () => {
-    navigate(`/pets/${petID}/reminders/new`);
+  const handleCreatePetProfile = () => {
+    navigate("/pets/new");
   };
 
   return (
-    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4 mt-6">
+    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-24 mt-20 mb-20">
         <ReminderIndex />
       <div className="md:overflow-y-auto m-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <h2 className='text-3xl text-white text-center my-5 font-semibold border-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300'> My Pets</h2>
+        <div className='flex justify-center mb-2'>
+          <button
+            onClick={handleCreatePetProfile}
+            className="bg-blue-500 w-96 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            Create Pet Profile
+          </button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-auto" style={{ maxHeight: '500px' }}>
           {pets.map((pet) => (
             <div
-              key={pet.id}
-              onClick={() => handlePetClick(pet.id)}
-              className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
+            key={pet.id}
+            onClick={() => handlePetClick(pet.id)}
+            className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
             >
               {/* Image div */}
               <div className="relative overflow-hidden rounded-lg mt-6" style={{ paddingTop: '100%' }}>
@@ -48,7 +57,7 @@ function PetIndex({ handleLogout }) {
                   className="absolute inset-0 w-full h-full object-cover"
                   src={pet.image_url}
                   alt={pet.name}
-                />
+                  />
               </div>
 
               <div className="p-4">
@@ -63,6 +72,7 @@ function PetIndex({ handleLogout }) {
           ))}
         </div>
       </div>
+      
     </div>
   );
 }

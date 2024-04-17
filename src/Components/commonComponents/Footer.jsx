@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-row justify-between">
           <Link to={"/dashboard"}>
             <div className="lg:pr-16 font-bold text-2xl text-white inline-block pt-3 pr-10">
-              CQ
+              PetPulse
             </div>
           </Link>
           <div className="text-white flex flex-row  pt-5 ">
