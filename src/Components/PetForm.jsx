@@ -40,7 +40,7 @@ const PetForm = () => {
             species: data.species,
             breed: data.breed || "",
             age: data.age || 0,
-            image_url: data.image_url || "",
+            image_url: data.image_url || "https://res.cloudinary.com/dm8xhvx4t/image/upload/v1713371694/default_pet_zscwz2.jpg",
             updated_at:new Date().toISOString(),
           });
           setCreatedAt(new Date(data.created_at).toLocaleString());

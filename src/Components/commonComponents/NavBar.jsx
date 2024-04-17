@@ -78,10 +78,11 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
       socket.on("remindersDue", (receivedReminders) => {
         if (receivedReminders.length > 0) {
           // This is the content for the modal
-          // setModalContent(`You are schedule for ${receivedReminders[0].reminder_message} at
-        // ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
-        // This is the method to open the modal
-        setModalContent(receivedReminders[0].reminder_message);
+          setModalContent(`You are scheduled for ${receivedReminders[0].pet_name} \n
+           MessageType: ${receivedReminders[0].reminder_type} \n
+           Message: ${receivedReminders[0].reminder_message} \n
+           at ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
+
         setIsModalOpen(true);
         }
       });
@@ -90,7 +91,7 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
       console.log("receivedReminders", receivedReminders);
     });
 
-  //     //  We need to add this return to avoid memory leaks. It turns the socket.on method off when the component is unmounted
+    //  We need to add this return to avoid memory leaks. It turns the socket.on method off when the component is unmounted
       return () => {
         socket.off("remindersDue");
       };
