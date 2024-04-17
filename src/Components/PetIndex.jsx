@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReminderIndex from './ReminderIndex';
 
-function PetIndex({ handleLogout }) {
+function PetIndex({ handleLogout,refresh}) {
   const [pets, setPets] = useState([]);
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ function PetIndex({ handleLogout }) {
 
   return (
     <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-24 mt-20 mb-20">
-        <ReminderIndex />
+        <ReminderIndex refresh = {refresh}/>
       <div className="md:overflow-y-auto m-0">
         <h2 className='text-3xl text-white text-center my-5 font-semibold border-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300'> My Pets</h2>
         <div className='flex justify-center mb-2'>

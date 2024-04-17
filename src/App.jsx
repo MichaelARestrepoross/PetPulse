@@ -21,6 +21,7 @@ import ReminderForm from "./Components/ReminderForm";
 function App() {
   const navigate = useNavigate();
   const [toggleLogin, setToggleLogin] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   async function handleLogout() {
     localStorage.removeItem("token");
@@ -36,6 +37,8 @@ function App() {
         handleLogout={handleLogout}
         toggleLogin={toggleLogin}
         setToggleLogin={setToggleLogin}
+        refresh={refresh} 
+        setRefresh ={setRefresh}
       />
 
       <Routes>
@@ -65,7 +68,8 @@ function App() {
           />
           <Route
             path="/pets"
-            element={<PetIndex handleLogout={handleLogout} />}
+            element={<PetIndex handleLogout={handleLogout} refresh={refresh} 
+          />}
           />
           <Route
             path="/pets/:id"

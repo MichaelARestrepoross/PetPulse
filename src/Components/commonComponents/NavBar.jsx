@@ -18,17 +18,18 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
   hour12: true, // Use 12-hour time; set to false for 24-hour time
 });
 
-const NavBar = ({ toggleLogin, handleLogout }) => {
+const NavBar = ({ toggleLogin, handleLogout , refresh, setRefresh}) => {
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const [reminderInfoId, setreminderInfoId]= useState(null);
 
   const navigate = useNavigate();
 
 
-  const handleDelete = async (ID) => {
+  const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3003/api/reminders/${ID}`, {
+      const response = await fetch(`http://localhost:3003/api/reminders/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -38,6 +39,7 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
       if (response.ok) {
         setRemindersToggle(!remindersToggle);
         console.log('Reminder deleted successfully');
+        setRefresh(!refresh);
       } else {
         console.error('Failed to delete reminder');
         console.error('Response status:', response.status);
@@ -84,6 +86,7 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
            at ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
 
         setIsModalOpen(true);
+        setreminderInfoId(receivedReminders[0].id);
         }
       });
 
@@ -127,6 +130,7 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
           onClose={() => {
             setIsModalOpen(false);
             setModalContent("");
+            handleDelete(reminderInfoId)
           }}
         >
           {modalContent}

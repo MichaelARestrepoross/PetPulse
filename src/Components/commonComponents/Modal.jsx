@@ -15,30 +15,35 @@ const Modal = ({ isOpen, onClose, children }) => {
           justifyContent: "center",
           zIndex: 1000, //the layer
         }}
-      >
-        <div
+      > 
+        <div className=""
           style={{
-            backgroundColor: "lemonchiffon",
-            padding: "20px",
-            borderRadius: "5px",
-            width: "80%",
-            maxWidth: "400px",
-            zIndex:1001,
-          }}
-        >
-          {children}
-          <button
-            onClick={onClose}
-            style={{
-              background: "lightgreen",
+              backgroundColor: "white",
+              padding: "20px",
               borderRadius: "5px",
-              padding: 5,
-              marginTop: "10px",
-              display: "block",
+              width: "100%",
+              maxWidth: "400px",
+              zIndex:1001,
             }}
-          >
-            Close
-          </button>
+        >
+            <h2 className='text-3xl text-white text-center mb-4 font-semibold border-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300'>
+        My Reminders
+      </h2>
+          {children}
+            <div className="flex justify-center">
+                <button
+                className="text-white bg-blue-600 w-40"
+                onClick={onClose}
+                style={{
+                    borderRadius: "5px",
+                    padding: 5,
+                    marginTop: "10px",
+                    display: "block",
+                    }}
+                    >
+                    Close
+                </button>
+            </div>
         </div>
       </div>
     );
