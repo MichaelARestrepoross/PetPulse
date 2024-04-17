@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Modal from "./Modal";
 const socket = io("http://localhost:3003");
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -21,6 +22,32 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+
+  const navigate = useNavigate();
+
+
+  const handleDelete = async (ID) => {
+    try {
+      const response = await fetch(`http://localhost:3003/api/reminders/${ID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setRemindersToggle(!remindersToggle);
+        console.log('Reminder deleted successfully');
+      } else {
+        console.error('Failed to delete reminder');
+        console.error('Response status:', response.status);
+        const responseBody = await response.json();
+        console.error('Response body:', responseBody);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
 
   useEffect(() => {
     if (!toggleLogin) setUser(null);
@@ -71,37 +98,38 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
   }, [toggleLogin]);
 
   return (
-    <div className="navbar-container">
-      <h1>Navbar Component</h1>
-      <h2>
-        <Link style={{ textDecoration: "none" }} to="/">
-          Your image or Logo (click here to go to Landing Page)
-        </Link>
-      </h2>
-
-      {!toggleLogin ? (
-        <Link to={"/login"}>
-          <span>Login</span>
-        </Link>
-      ) : (
-        <div>
-          {user && <span>Hello, {user.username.toUpperCase()}? | </span>}
-          <Link onClick={handleLogout}>
-            <span>Logout</span>
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-sky-300">
+      <div className="px-4 py-4 flex flex-row justify-between"></div>
+          <Link to={"/"}>
+            <div className="font-bold text-2xl text-white inline-block">
+              <span className="">P</span>et
+              <span className="">P</span>ulse
+            </div>
           </Link>
-        </div>
-      )}
-      <hr />
-      {/* We are creating a modal to show the reminders. It will pop up each time the socket.on method is triggered in the backend schedule.js file. We give it an onClose method to close the modal by clicking ok and we reset the modalContent and isModalOpen to false */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setModalContent("");
-        }}
-      >
-        {modalContent}
-      </Modal>
+        {!toggleLogin ? (
+          <Link to={"/login"}>
+            <span>Login</span>
+          </Link>
+        ) : (
+          <div>
+            {user && <span>Hello, {user.username.toUpperCase()}? | </span>}
+            <Link onClick={handleLogout}>
+              <span>Logout</span>
+            </Link>
+          </div>
+        )}
+
+        <hr />
+        {/* We are creating a modal to show the reminders. It will pop up each time the socket.on method is triggered in the backend schedule.js file. We give it an onClose method to close the modal by clicking ok and we reset the modalContent and isModalOpen to false */}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            setModalContent("");
+          }}
+        >
+          {modalContent}
+        </Modal>
     </div>
   );
 };

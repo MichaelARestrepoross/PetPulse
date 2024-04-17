@@ -32,21 +32,21 @@ function PetIndex({ handleLogout }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4 mt-6">
+    <div className="max-w-4xl mx-auto md:grid md:grid-cols-2 md:gap-4 mt-6 mb-20">
         <ReminderIndex />
       <div className="md:overflow-y-auto m-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <button
           onClick={handleCreatePetProfile}
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Create Pet Profile
         </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-auto" style={{ maxHeight: '500px' }}>
           {pets.map((pet) => (
             <div
-              key={pet.id}
-              onClick={() => handlePetClick(pet.id)}
-              className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
+            key={pet.id}
+            onClick={() => handlePetClick(pet.id)}
+            className="cursor-pointer bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg"
             >
               {/* Image div */}
               <div className="relative overflow-hidden rounded-lg mt-6" style={{ paddingTop: '100%' }}>
@@ -54,7 +54,7 @@ function PetIndex({ handleLogout }) {
                   className="absolute inset-0 w-full h-full object-cover"
                   src={pet.image_url}
                   alt={pet.name}
-                />
+                  />
               </div>
 
               <div className="p-4">
@@ -68,7 +68,8 @@ function PetIndex({ handleLogout }) {
             </div>
           ))}
         </div>
-      </div>
+        </div>
+      
     </div>
   );
 }

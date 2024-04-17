@@ -60,7 +60,7 @@ function PetDetailed() {
   };
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto mb-20">
       {pet && (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <div className="px-4 py-2">
