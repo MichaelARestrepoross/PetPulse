@@ -71,49 +71,54 @@ const Login = ({ setToggleLogin }) => {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Login Component</h1>
-      <br />
-      <h2>
+    <div className="min-h-screen flex flex-col items-center mt-20">
+      <h1 className="text-4xl font-bold mb-8">Login Component</h1>
+      <h2 className="mb-8">
         Use the DemoUser button to login and save time during your presentation
       </h2>
-      <button onClick={handleDemoSignIn}>Demo User</button>
-      <br />
-      <br />
-      <br />
+      <button
+        onClick={handleDemoSignIn}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-8"
+      >
+        Demo User
+      </button>
 
-      <h3> Remove the 'br' tags and these instructions if you use this code</h3>
-
-      <br />
-      <br />
-      <br />
-      <h3>Below is the regular login form which should be functional</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
+      <h3 className="mb-8">Below is the regular login form which should be functional</h3>
+      <form onSubmit={handleSubmit} className="mb-8">
+        <label htmlFor="username" className="block mb-2">
+          Username
           <input
             id="username"
             value={user.username}
             type="text"
-            placeholder="username"
+            placeholder="Enter your username"
             autoComplete="username"
             onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full"
           />
         </label>
 
-        <label htmlFor="password">
+        <label htmlFor="password" className="block mb-4">
+          Password
           <input
             id="password"
             value={user.password}
             type="password"
-            placeholder="password"
+            placeholder="Enter your password"
             onChange={handleChange}
             autoComplete="current-password"
+            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 block w-full"
           />
         </label>
-        <button>Submit</button>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+        >
+          Submit
+        </button>
       </form>
       <p>
-        No Account? <Link to="/register">Register</Link>
+        No Account? <Link to="/register" className="text-blue-500">Register</Link>
       </p>
     </div>
   );
