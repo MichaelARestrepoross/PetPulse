@@ -27,8 +27,8 @@ function PetIndex({ handleLogout }) {
     navigate(`/pets/${petID}`);
   };
 
-  const handleCreateReminder = () => {
-    navigate(`/pets/${petID}/reminders/new`);
+  const handleCreatePetProfile = () => {
+    navigate("/pets/new");
   };
 
   return (
@@ -36,6 +36,12 @@ function PetIndex({ handleLogout }) {
         <ReminderIndex />
       <div className="md:overflow-y-auto m-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <button
+          onClick={handleCreatePetProfile}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Create Pet Profile
+        </button>
           {pets.map((pet) => (
             <div
               key={pet.id}

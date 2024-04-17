@@ -44,27 +44,31 @@ const NavBar = ({ toggleLogin, handleLogout }) => {
     }
   }, [toggleLogin]);
 
-  // useEffect(() => {
-  //   //We only want this useEffect to run when the user is logged in
-  //   if (toggleLogin) {
-  //     // This is the socket.on method to listen for the remindersDue event in the backend schedule.js file
-  //     socket.on("remindersDue", (receivedReminders) => {
-  //       if (receivedReminders.length > 0) {
-  //         // This is the content for the modal
-  //         // setModalContent(`You are schedule for ${receivedReminders[0].reminder_message} at
-  //       // ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
-  //       console.log("Hello")
-  //         // This is the method to open the modal
-  //         setIsModalOpen(true);
-  //       }
-  //     });
+  useEffect(() => {
+    //We only want this useEffect to run when the user is logged in
+    if (toggleLogin) {
+      // This is the socket.on method to listen for the remindersDue event in the backend schedule.js file
+      socket.on("remindersDue", (receivedReminders) => {
+        if (receivedReminders.length > 0) {
+          // This is the content for the modal
+          // setModalContent(`You are schedule for ${receivedReminders[0].reminder_message} at
+        // ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
+        // This is the method to open the modal
+        setModalContent(receivedReminders[0].reminder_message);
+        setIsModalOpen(true);
+        }
+      });
+
+    socket.on("remindersDue", (receivedReminders) => {
+      console.log("receivedReminders", receivedReminders);
+    });
 
   //     //  We need to add this return to avoid memory leaks. It turns the socket.on method off when the component is unmounted
-  //     return () => {
-  //       socket.off("remindersDue");
-  //     };
-  //   }
-  // }, [toggleLogin]);
+      return () => {
+        socket.off("remindersDue");
+      };
+    }
+  }, [toggleLogin]);
 
   return (
     <div className="navbar-container">
