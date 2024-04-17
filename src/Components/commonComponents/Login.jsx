@@ -72,10 +72,7 @@ const Login = ({ setToggleLogin }) => {
 
   return (
     <div className="min-h-screen flex flex-col items-center mt-20">
-      <h1 className="text-4xl font-bold mb-8">Login Component</h1>
-      <h2 className="mb-8">
-        Use the DemoUser button to login and save time during your presentation
-      </h2>
+      <h1 className="text-4xl font-bold mb-8">Login</h1>
       <button
         onClick={handleDemoSignIn}
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-8"
@@ -83,7 +80,7 @@ const Login = ({ setToggleLogin }) => {
         Demo User
       </button>
 
-      <h3 className="mb-8">Below is the regular login form which should be functional</h3>
+      <h3 className="mb-8">You may fill in your Credentials and login below</h3>
       <form onSubmit={handleSubmit} className="mb-8">
         <label htmlFor="username" className="block mb-2">
           Username

@@ -37,7 +37,6 @@ const NavBar = ({ toggleLogin, handleLogout , refresh, setRefresh}) => {
       });
 
       if (response.ok) {
-        setRemindersToggle(!remindersToggle);
         console.log('Reminder deleted successfully');
         setRefresh(!refresh);
       } else {
@@ -80,10 +79,16 @@ const NavBar = ({ toggleLogin, handleLogout , refresh, setRefresh}) => {
       socket.on("remindersDue", (receivedReminders) => {
         if (receivedReminders.length > 0) {
           // This is the content for the modal
-          setModalContent(`You are scheduled for ${receivedReminders[0].pet_name} \n
-           MessageType: ${receivedReminders[0].reminder_type} \n
-           Message: ${receivedReminders[0].reminder_message} \n
-           at ${formattedDate.format(new Date(receivedReminders[0].reminder_time))}`);
+          setModalContent(
+            <div>
+              <p>{receivedReminders[0].pet_name} is scheduled for </p>
+              <p>MessageType: {receivedReminders[0].reminder_type}</p>
+              <p>Message: {receivedReminders[0].reminder_message}</p>
+              <p>
+                at {formattedDate.format(new Date(receivedReminders[0].reminder_time))}
+              </p>
+            </div>
+          );
 
         setIsModalOpen(true);
         setreminderInfoId(receivedReminders[0].id);

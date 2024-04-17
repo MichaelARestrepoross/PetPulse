@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; 
 import ReminderSingle from './ReminderSingle';
 
-function PetDetailed() {
+function PetDetailed({refresh}) {
   const [pet, setPet] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function PetDetailed() {
       }
     };
     fetchPetDetails();
-  }, [id,remindersToggle]);
+  }, [id,remindersToggle, refresh]);
 
   const handleDelete = async () => {
     try {

@@ -73,7 +73,7 @@ function App() {
           />
           <Route
             path="/pets/:id"
-            element={<PetDetailed handleLogout={handleLogout} />}
+            element={<PetDetailed handleLogout={handleLogout} refresh={refresh}  />}
           />
           <Route
             path="/pets/:id/edit"
