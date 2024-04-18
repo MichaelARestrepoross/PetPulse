@@ -29,7 +29,7 @@ const NavBar = ({ toggleLogin, handleLogout , refresh, setRefresh}) => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3003/api/reminders/${id}`, {
+      const response = await fetch(`${URL}/api/reminders/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -91,15 +91,18 @@ const NavBar = ({ toggleLogin, handleLogout , refresh, setRefresh}) => {
           );
 
         setIsModalOpen(true);
+        // Store the ID of the first reminder for further reference
         setreminderInfoId(receivedReminders[0].id);
         }
       });
 
-    socket.on("remindersDue", (receivedReminders) => {
-      console.log("receivedReminders", receivedReminders);
-    });
+    // log reminders for debugging
+    // socket.on("remindersDue", (receivedReminders) => {
+    //   console.log("receivedReminders", receivedReminders);
+    // });
 
-    //  We need to add this return to avoid memory leaks. It turns the socket.on method off when the component is unmounted
+    // added this return to avoid memory leaks. 
+    //It turns the socket.on method off when the component is unmounted
       return () => {
         socket.off("remindersDue");
       };
