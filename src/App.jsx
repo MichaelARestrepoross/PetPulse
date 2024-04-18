@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 //Common Components
@@ -30,6 +30,12 @@ function App() {
 
     navigate("/login");
   }
+
+  //fix navbar on refresh
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(token) setToggleLogin(true)
+  },[])
 
   return (
     <>
