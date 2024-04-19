@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ReminderSingle({ reminder,remindersToggle, setRemindersToggle }) {
   const navigate = useNavigate(); 
+  const URL = import.meta.env.VITE_BASE_URL;
 
   // Function to format reminder time
   const formatReminderTime = (timeString) => {
@@ -16,7 +17,7 @@ function ReminderSingle({ reminder,remindersToggle, setRemindersToggle }) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3003/api/reminders/${reminder.id}`, {
+      const response = await fetch(`${URL}/api/reminders/${reminder.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

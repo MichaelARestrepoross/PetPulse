@@ -5,11 +5,12 @@ import ReminderIndex from './ReminderIndex';
 function PetIndex({ handleLogout,refresh}) {
   const [pets, setPets] = useState([]);
   const navigate = useNavigate();
+  const URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('http://localhost:3003/api/pets');
+        const response = await fetch(`${URL}/api/pets`);
         if (!response.ok) {
           throw new Error('Failed to fetch pets');
         }

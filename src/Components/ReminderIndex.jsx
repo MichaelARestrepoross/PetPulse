@@ -4,11 +4,12 @@ import ReminderSingle from './ReminderSingle';
 function ReminderIndex({refresh}) {
   const [reminders, setReminders] = useState([]);
   const [remindersToggle,setRemindersToggle] = useState(false);
+  const URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const fetchReminders = async () => {
       try {
-        const response = await fetch('http://localhost:3003/api/reminders');
+        const response = await fetch(`${URL}/api/reminders`);
         if (!response.ok) {
           throw new Error('Failed to fetch reminders');
         }

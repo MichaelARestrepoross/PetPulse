@@ -3,7 +3,7 @@ import { useParams, useNavigate ,useOutletContext} from "react-router-dom";
 
 
 const ReminderForm = () => {
-  const API_URL = "http://localhost:3003";
+  const API_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const { id, reminderId, action } = useParams(); // action will be "new" or "edit"
  const {user} = useOutletContext();

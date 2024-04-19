@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const PetForm = () => {
-  const API_URL = "http://localhost:3003";
+  const API_URL = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate();
   const { id } = useParams();
   // Retrieve user data from local storage

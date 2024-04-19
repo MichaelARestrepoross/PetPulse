@@ -7,13 +7,14 @@ function PetDetailed({refresh}) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [remindersToggle,setRemindersToggle] = useState(false);
-  
+  const URL = import.meta.env.VITE_BASE_URL;
+
   useEffect(() => {
     const fetchPetDetails = async () => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const response = await fetch(`http://localhost:3003/api/pets/${id}`, {
+          const response = await fetch(`${URL}/api/pets/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -32,7 +33,7 @@ function PetDetailed({refresh}) {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = await fetch(`http://localhost:3003/api/pets/${id}`, {
+        const response = await fetch(`${URL}/api/pets/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

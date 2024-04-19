@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Modal from "./Modal";
-const socket = io("http://localhost:3003");
+const URL = import.meta.env.VITE_BASE_URL;
+const socket = io(`${URL}`);
 import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-
-const URL = import.meta.env.VITE_BASE_URL;
 
 const formattedDate = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
